@@ -1,0 +1,41 @@
+Rules for taking cards:
+
+The game has a high chance of going infinite if a certain player's cards get put on the bottom first.
+For example:
+	If player 1 wins:
+		player1.enqueue(player1.dequeue());
+		player1.enqueue(player2.dequeue());
+	If player 2 wins:
+		player2.enqueue(player1.dequeue());
+		player2.enqueue(player2.dequeue());
+		
+The problem with this implementation is the cards in the two decks eventually get cards in a certain order.
+After every high card there will be a low card and vice versa.
+A high card in one deck is at the same index as the low cards in the other deck.
+This forces the players to keep exchanging cards.
+The decks get in a stable position and the game doesn't move forward.
+		
+In all other studied cases the game ends in around 1000 or less turns
+The game is implements this choosing randomly between players.
+The code could be shortened as followed:
+
+	If player 1 wins:
+		player1.enqueue(player1.dequeue());
+		player1.enqueue(player2.dequeue());
+	If player 2 wins:
+		player2.enqueue(player2.dequeue());
+		player2.enqueue(player1.dequeue());
+		
+	OR:
+	
+	If player 1 wins:
+		player1.enqueue(player2.dequeue());
+		player1.enqueue(player1.dequeue());
+	If player 2 wins:
+		player2.enqueue(player1.dequeue());
+		player2.enqueue(player2.dequeue());
+		
+This solution puts the cards in the same order as the infinite code.
+The difference lays in the how the cards line up to the other deck.
+The winning, higher card gets matched up with the winning, higher cards in the other, making the outcome more random again.
+
