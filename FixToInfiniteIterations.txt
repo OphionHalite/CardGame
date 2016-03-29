@@ -12,9 +12,18 @@ For example:
 The problem with this implementation is the cards in the two decks eventually get cards in a certain order.
 After every high card there will be a low card and vice versa.
 A high card in one deck is at the same index as the low cards in the other deck.
+P1: LHLHLHLHLHLHLHLHLHLHLH
+P2: HLHLHLHLHLHLHLHLHLHLHlHLHLHLHL
 This forces the players to keep exchanging cards.
 The decks get in a stable position and the game doesn't move forward.
-		
+Resulting in:
+P1: HLHLHLHLHLHLHLHLHLHLH
+P2: LHLHLHLHLHLHLHLHLHLHlHLHLHLHLHL		
+to:
+P1: LHLHLHLHLHLHLHLHLHLHLH
+P2: HLHLHLHLHLHLHLHLHLHlHLHLHLHLHL
+	= first state
+
 In all other studied cases the game ends in around 1000 or less turns
 The game is implements this choosing randomly between players.
 The code could be shortened as followed:
@@ -38,4 +47,7 @@ The code could be shortened as followed:
 This solution puts the cards in the same order as the infinite code.
 The difference lays in the how the cards line up to the other deck.
 The winning, higher card gets matched up with the winning, higher cards in the other, making the outcome more random again.
+P1: LHLHLHLHLHLHLHLHLHLHLH
+P2: LHLHLHLHLHLHLHLHLHLHLHlHLHLHLH
+	= Random outcome
 
